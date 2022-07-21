@@ -283,11 +283,11 @@ function PANEL:Init()
         local actionvisible = 1
         for num, action in pairs(TAB.Settings.ActionPlayer) do
             if action.visible(ply) and victim:IsValid() then
-                local iconstring, iconname = action.icon(ply, victim)
+                local iconstring, iconstate = action.icon(ply, victim)
                 local icon = Material(iconstring)
 
                 if string.sub(iconstring, 1, 4) == "http" then
-					TAB.GetImage(iconstring, iconname, function(url, filename)
+					TAB.GetImage(iconstring, "action"..num.."_"..iconstate..".png", function(url, filename)
 						icon = Material( filename )
 					end)
 				end
@@ -308,11 +308,11 @@ function PANEL:Init()
                     if victim:IsValid() then
                         action.func(ply, victim)
                         timer.Simple(0.1, function()
-                            iconstring, iconname = action.icon(ply, victim)
+                            iconstring, iconstate = action.icon(ply, victim)
                             icon = Material(iconstring)
 
                             if string.sub(iconstring, 1, 4) == "http" then
-                                TAB.GetImage(iconstring, iconname, function(url, filename)
+                                TAB.GetImage(iconstring, "action"..num.."_"..iconstate..".png", function(url, filename)
                                     icon = Material( filename )
                                 end)
                             end

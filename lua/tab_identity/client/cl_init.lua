@@ -49,7 +49,9 @@ function TAB:Launch()
 	TAB.Base:Center()
 
 	if string.sub(TAB.Settings.Background, 1, 4) == "http" then
-		TAB.GetImage(TAB.Settings.Background, TAB.Settings.BackgroundName, function(url, filename)
+		TAB.GetImage(TAB.Settings.Background, "background.png", function(url, filename)
+			if !IsValid(TAB.Base) then return end
+			
 			local background = Material(filename)
 			TAB.Base.Paint = function(self, w, h)
 				surface.SetDrawColor(color_white)

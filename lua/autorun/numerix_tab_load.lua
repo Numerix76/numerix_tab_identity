@@ -11,7 +11,7 @@ TAB.Language = TAB.Language or {}
 
 local FileSystem = "tab_identity"
 local AddonName = "Identity TAB"
-local Version = "1.1.7"
+local Version = "1.1.8"
 local FromWorshop = false
 
 if SERVER then
